@@ -54,17 +54,24 @@ function App() {
         <label htmlFor="old">Old link: </label>
         <input id="old" type="text" ref={oldlinkref} className="textInput" />
         <button onClick={convertLink}>convert</button>
-        {result && <button onClick={clear}>clear</button>}
+        <button
+          onClick={clear}
+          style={{ visibility: result ? "visible" : "hidden" }}
+        >
+          clear
+        </button>
       </div>
 
-      {result && (
-        <div className="row">
-          <label htmlFor="result">Result: </label>
-          <input id="result" value={result} className="textInput" />
-          <button onClick={copyvalue}>copy</button>
-          <button onClick={open}>open</button>
-        </div>
-      )}
+      <div
+        className="row"
+        style={{ visibility: result ? "visible" : "hidden" }}
+      >
+        <label htmlFor="result">Result: </label>
+        <input id="result" value={result ?? ""} className="textInput" />
+        <button onClick={copyvalue}>copy</button>
+        <button onClick={open}>open</button>
+      </div>
+
       {error ? error : null}
     </div>
   );
