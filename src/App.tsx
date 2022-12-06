@@ -50,17 +50,17 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="row">
         <label htmlFor="old">Old link: </label>
-        <input id="old" type="text" ref={oldlinkref} />
+        <input id="old" type="text" ref={oldlinkref} className="textInput" />
         <button onClick={convertLink}>convert</button>
         {result && <button onClick={clear}>clear</button>}
       </div>
 
       {result && (
-        <div>
+        <div className="row">
           <label htmlFor="result">Result: </label>
-          <input id="result" value={result} />
+          <input id="result" value={result} className="textInput" />
           <button onClick={copyvalue}>copy</button>
           <button onClick={open}>open</button>
         </div>
