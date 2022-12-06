@@ -4,10 +4,10 @@ import "./App.css";
 function App() {
   const [result, setResult] = useState<null | string>(null);
   const [error, setError] = useState<null | string>(null);
-  const jiralinkref = useRef<HTMLInputElement>(null);
+  const oldlinkref = useRef<HTMLInputElement>(null);
 
   const convertLink = () => {
-    const value = jiralinkref.current?.value;
+    const value = oldlinkref.current?.value;
     // the value should look like this: https://app.shakebugs.com/gasbuddy/IISZ6VHR/feedback/19587
     if (value) {
       const split = value.split("/");
@@ -38,7 +38,7 @@ function App() {
 
   const clear = () => {
     // clear the input
-    jiralinkref.current!.value = "";
+    oldlinkref.current!.value = "";
     // clear the result
     setResult(null);
   };
@@ -51,8 +51,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        <label htmlFor="jira">Jira link: </label>
-        <input id="jira" type="text" ref={jiralinkref} />
+        <label htmlFor="old">Old link: </label>
+        <input id="old" type="text" ref={oldlinkref} />
         <button onClick={convertLink}>convert</button>
         {result && <button onClick={clear}>clear</button>}
       </div>
